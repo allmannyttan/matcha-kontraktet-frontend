@@ -1,11 +1,11 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { useLocalStorage } from '@iteam/hooks'
 import { Form, Input, Button, ErrorMessage } from '../../components/formElemts'
 import styled from 'styled-components'
 import { post } from '../../utils/fetch'
+import history from '../../utils/history'
 
 const Wrapper = styled.div`
   display: flex;
@@ -32,7 +32,6 @@ const LoginSchema = Yup.object().shape({
 })
 
 const Login: React.FC = () => {
-  const history = useHistory()
   const [, setToken] = useLocalStorage('token')
 
   return (
