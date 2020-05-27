@@ -1,14 +1,14 @@
 import React from 'react'
 import './App.css'
+import { BrowserRouter as Router } from 'react-router-dom'
+import App from './routes/App'
 
-function App() {
+const RootApp: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Sublet detector</p>
-      </header>
-    </div>
+    <Router>
+      <App />
+    </Router>
   )
 }
 
-export default App
+export default RootApp

@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Development
 
+First off, create an `.env` file. See the example file in root.
+
 ```
 nvm use
 npm i
