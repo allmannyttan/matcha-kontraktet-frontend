@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useLocalStorage } from '@iteam/hooks'
+import jwtDecode from 'jwt-decode'
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,10 +19,18 @@ const Name = styled.span`
 `
 
 const Start: React.FC = () => {
+  const [token] = useLocalStorage('token')
+  const [username, setUsername] = useState('')
+
+  useEffect(() => {
+    const { username } = jwtDecode(token)
+    setUsername(username)
+  })
+
   return (
     <Wrapper>
       <Hello>
-        Välkommen användare: <Name>?</Name>!
+        Välkommen användare: <Name>{username}</Name>!
       </Hello>
     </Wrapper>
   )
