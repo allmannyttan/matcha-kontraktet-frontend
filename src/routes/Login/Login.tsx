@@ -2,7 +2,12 @@ import React from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { useLocalStorage } from '@iteam/hooks'
-import { Form, Input, Button, ErrorMessage } from '../../components/formElemts'
+import {
+  Form,
+  Input,
+  Button,
+  ErrorMessage,
+} from '../../components/FormElements'
 import styled from 'styled-components'
 import { post } from '../../utils/fetch'
 import history from '../../utils/history'
