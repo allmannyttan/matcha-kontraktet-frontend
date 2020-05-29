@@ -25,7 +25,7 @@ const Start: React.FC = () => {
   useEffect(() => {
     const { username } = jwtDecode(token)
     setUsername(username)
-  })
+  }, [token])
 
   return (
     <Wrapper>
