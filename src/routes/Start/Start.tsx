@@ -1,14 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { useLocalStorage } from '@iteam/hooks'
-import jwtDecode from 'jwt-decode'
-
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-`
+import { connect } from 'react-redux'
+import { State } from '../../store/types'
 
 const Hello = styled.h1`
   font-size: 40px;
@@ -18,22 +11,14 @@ const Name = styled.span`
   color: red;
 `
 
-const Start: React.FC = () => {
-  const [token] = useLocalStorage('token')
-  const [username, setUsername] = useState('')
-
-  useEffect(() => {
-    const { username } = jwtDecode(token)
-    setUsername(username)
-  }, [token])
-
+const Start: React.FC<State> = ({ system }) => {
   return (
-    <Wrapper>
-      <Hello>
-        Välkommen användare: <Name>{username}</Name>!
-      </Hello>
-    </Wrapper>
+    <Hello>
+      Välkommen användare: <Name>{system.username}</Name>!
+    </Hello>
   )
 }
 
-export default Start
+const mapStateToProps = (state: State) => state
+
+export default connect(mapStateToProps)(Start)

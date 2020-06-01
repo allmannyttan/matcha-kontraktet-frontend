@@ -1,7 +1,6 @@
 import React from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { useLocalStorage } from '@iteam/hooks'
 import {
   Form,
   Input,
@@ -11,24 +10,23 @@ import {
 import styled from 'styled-components'
 import { post } from '../../utils/fetch'
 import history from '../../utils/history'
+import { connect } from 'react-redux'
+import { login } from '../../store/system/actions'
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
 `
 
 const FormWrapper = styled.div`
   text-align: center;
   width: 100%;
   max-width: 300px;
+  margin-top: 30px;
 `
 
-const Logo = styled.img`
-  width: 100%;
-  max-width: 200px;
-  margin-bottom: 30px;
+const H1 = styled.h1`
+  font-size: 24px;
 `
 
 const LoginSchema = Yup.object().shape({
@@ -36,13 +34,15 @@ const LoginSchema = Yup.object().shape({
   password: Yup.string().required('Obligatorisk'),
 })
 
-const Login: React.FC = () => {
-  const [, setToken] = useLocalStorage('token')
+interface LoginProps {
+  login: typeof login
+}
 
+const Login: React.FC<LoginProps> = ({ login }) => {
   return (
     <Wrapper>
       <FormWrapper>
-        <Logo src="/logo.png" />
+        <H1>Logga in</H1>
         <Formik
           initialValues={{ username: '', password: '' }}
           validationSchema={LoginSchema}
@@ -50,7 +50,9 @@ const Login: React.FC = () => {
             try {
               const response = await post('/auth/generate-token', input)
 
-              setToken(response.token)
+              login({
+                token: response.token,
+              })
               history.push('/')
             } catch (err) {
               setFieldError('password', 'Inloggning misslyckades')
@@ -80,4 +82,4 @@ const Login: React.FC = () => {
   )
 }
 
-export default Login
+export default connect(null, { login })(Login)

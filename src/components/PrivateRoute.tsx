@@ -1,22 +1,16 @@
 import React from 'react'
 import { Route, Redirect, RouteProps } from 'react-router-dom'
-import { useLocalStorage } from '@iteam/hooks'
-import jwtDecode from 'jwt-decode'
-import { fromUnixTime, isFuture } from 'date-fns'
+import { validateAuth } from '../utils/auth'
+import { connect } from 'react-redux'
+import { SystemState } from '../store/system/types'
+import { State } from '../store/types'
 
-const validateAuth = (token: string): boolean => {
-  if (!token || token === '') {
-    return false
-  }
-  const { exp } = jwtDecode(token)
-  const expDate = fromUnixTime(exp)
-
-  return isFuture(expDate)
+interface PrivateRouteProps extends RouteProps {
+  system: SystemState
 }
 
-const PrivateRoute = ({ children, ...rest }: RouteProps) => {
-  const [token] = useLocalStorage('token')
-  const isAutheticated = validateAuth(token)
+const PrivateRoute = ({ children, system, ...rest }: PrivateRouteProps) => {
+  const isAutheticated = validateAuth(system.token)
 
   return (
     <Route
@@ -26,4 +20,6 @@ const PrivateRoute = ({ children, ...rest }: RouteProps) => {
   )
 }
 
-export default PrivateRoute
+const mapStateToProps = (state: State) => ({ system: state.system })
+
+export default connect(mapStateToProps)(PrivateRoute)
