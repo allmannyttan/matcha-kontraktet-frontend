@@ -1,14 +1,15 @@
 import React from 'react'
 import './App.css'
+import { Router } from 'react-router-dom'
+import App from './routes/App'
+import history from './utils/history'
 
-function App() {
+const RootApp: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Sublet detector</p>
-      </header>
-    </div>
+    <Router history={history}>
+      <App />
+    </Router>
   )
 }
 
-export default App
+export default RootApp
