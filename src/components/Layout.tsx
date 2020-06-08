@@ -8,6 +8,7 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
   grid-column: 3/4;
+  margin-top: 30px;
 `
 
 const Layout: React.FC = (props) => {

@@ -1,8 +1,6 @@
 import history from '../utils/history'
 
-const token = localStorage.getItem('token')
-
-export const post = async (path: string, body: object) => {
+export const post = async (path: string, body: object, token?: string) => {
   try {
     const response = await fetch(process.env.REACT_APP_API_BASE_URL + path, {
       method: 'POST',
@@ -23,7 +21,7 @@ export const post = async (path: string, body: object) => {
   }
 }
 
-export const get = async (path: string) => {
+export const get = async (path: string, token?: string) => {
   try {
     const response = await fetch(process.env.REACT_APP_API_BASE_URL + path, {
       method: 'GET',
