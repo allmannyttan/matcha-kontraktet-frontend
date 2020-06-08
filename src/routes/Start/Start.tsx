@@ -1,24 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
-import { State } from '../../store/types'
+import SelectionList from '../../components/SelectionList'
 
-const Hello = styled.h1`
-  font-size: 40px;
-`
-
-const Name = styled.span`
-  color: red;
-`
-
-const Start: React.FC<State> = ({ system }) => {
+const Start: React.FC = () => {
   return (
-    <Hello>
-      Välkommen användare: <Name>{system.username}</Name>!
-    </Hello>
+    <>
+      <h1>Urval</h1>
+      <SelectionList />
+    </>
   )
 }
 
-const mapStateToProps = (state: State) => state
-
-export default connect(mapStateToProps)(Start)
+export default Start
