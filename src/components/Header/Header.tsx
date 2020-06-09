@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { logout } from '../../store/system/actions'
 import Avatar from '../Avatar'
 import { Link } from '../FormElements'
+import { Link as RouterLink } from 'react-router-dom'
 
 const Wrapper = styled.header`
   padding: 15px;
@@ -44,7 +45,9 @@ const Header: React.FC<HeaderProps> = ({ loggedIn, logout, username }) => {
   return (
     <Wrapper>
       <Content>
-        <Logo src="/logo.png" />
+        <RouterLink to="/">
+          <Logo src="/logo.png" />
+        </RouterLink>
         {loggedIn && (
           <Nav>
             <Avatar username={username} />

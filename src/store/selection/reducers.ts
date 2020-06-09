@@ -1,6 +1,7 @@
 import {
   FETCH_SELECTIONS,
-  FETCHING_SELECTIONS,
+  FETCH_SELECTION,
+  FETCHING_SELECTION,
   SelectionState,
   SelectionActionTypes,
 } from './types'
@@ -8,6 +9,7 @@ import {
 const initialState: SelectionState = {
   isFetching: false,
   selections: [],
+  selection: null,
 }
 
 export function selectionReducer(
@@ -15,13 +17,19 @@ export function selectionReducer(
   action: SelectionActionTypes
 ): SelectionState {
   switch (action.type) {
-    case FETCHING_SELECTIONS: {
+    case FETCHING_SELECTION: {
       return { ...state, isFetching: action.isFetching }
     }
     case FETCH_SELECTIONS: {
       return {
         ...state,
         selections: action.payload,
+      }
+    }
+    case FETCH_SELECTION: {
+      return {
+        ...state,
+        selection: action.payload,
       }
     }
     default:

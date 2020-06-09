@@ -1,6 +1,7 @@
 export interface SelectionState {
   isFetching: boolean
   selections: Selection[]
+  selection: Selection | null
 }
 
 export enum ContractStatus {
@@ -42,18 +43,25 @@ export interface Selection {
 }
 
 export const FETCH_SELECTIONS = 'FETCH_SELECTIONS'
-export const FETCHING_SELECTIONS = 'FETCHING_SELECTIONS'
+export const FETCH_SELECTION = 'FETCH_SELECTION'
+export const FETCHING_SELECTION = 'FETCHING_SELECTION'
 
 interface FetchSelectionsAction {
   type: typeof FETCH_SELECTIONS
   [payload: string]: any
 }
 
-interface FetchingSelectionsAction {
-  type: typeof FETCHING_SELECTIONS
+interface FetchSelectionAction {
+  type: typeof FETCH_SELECTION
+  [payload: string]: any
+}
+
+interface FetchingSelectionAction {
+  type: typeof FETCHING_SELECTION
   [payload: string]: any
 }
 
 export type SelectionActionTypes =
   | FetchSelectionsAction
-  | FetchingSelectionsAction
+  | FetchSelectionAction
+  | FetchingSelectionAction
