@@ -2,6 +2,7 @@ import {
   FETCH_SELECTIONS,
   FETCH_SELECTION,
   FETCHING_SELECTION,
+  CREATE_SELECTION,
   SelectionState,
   SelectionActionTypes,
 } from './types'
@@ -27,6 +28,12 @@ export function selectionReducer(
       }
     }
     case FETCH_SELECTION: {
+      return {
+        ...state,
+        selection: action.payload,
+      }
+    }
+    case CREATE_SELECTION: {
       return {
         ...state,
         selection: action.payload,

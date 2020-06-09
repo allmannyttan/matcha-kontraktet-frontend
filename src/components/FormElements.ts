@@ -4,6 +4,7 @@ import {
   Form as FormikForm,
   ErrorMessage as FormikErrorMessage,
 } from 'formik'
+import { Link as RouterLink } from 'react-router-dom'
 
 export const Form = styled(FormikForm)`
   display: flex;
@@ -29,6 +30,15 @@ export const SecondaryButton = styled(Button)`
   color: #000000;
   background-color: #dddddd;
   border-color: #cccccc;
+`
+
+export const LinkButton = styled(RouterLink)`
+  color: #ffffff;
+  background-color: #2696a8;
+  border-color: #218393;
+  padding: 15px;
+  font-size: 14px;
+  text-decoration: none;
 `
 
 export const ErrorMessage = styled(FormikErrorMessage)`

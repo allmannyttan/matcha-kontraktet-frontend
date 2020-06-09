@@ -45,6 +45,7 @@ export interface Selection {
 export const FETCH_SELECTIONS = 'FETCH_SELECTIONS'
 export const FETCH_SELECTION = 'FETCH_SELECTION'
 export const FETCHING_SELECTION = 'FETCHING_SELECTION'
+export const CREATE_SELECTION = 'CREATE_SELECTION'
 
 interface FetchSelectionsAction {
   type: typeof FETCH_SELECTIONS
@@ -61,7 +62,13 @@ interface FetchingSelectionAction {
   [payload: string]: any
 }
 
+interface CreateSelectionAction {
+  type: typeof CREATE_SELECTION
+  [payload: string]: any
+}
+
 export type SelectionActionTypes =
   | FetchSelectionsAction
   | FetchSelectionAction
   | FetchingSelectionAction
+  | CreateSelectionAction

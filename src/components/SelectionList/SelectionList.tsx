@@ -9,7 +9,7 @@ const Header = styled.div`
   font-weight: 700;
   font-size: 14px;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
   padding: 10px;
 `
 
@@ -22,6 +22,7 @@ const SelectionList: React.FC<SelectionListProps> = ({ selections }) => {
     <>
       <Header>
         <div>Namn</div>
+        <div>Sökterm</div>
         <div>Senaste körningen mot syna</div>
         <div>Skapad av</div>
         <div></div>
