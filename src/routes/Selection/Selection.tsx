@@ -11,7 +11,7 @@ const List = styled.ul`
 
 const Contract = styled.li`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
   padding: 15px 10px;
   color: rgb(40, 40, 40);
   font-size: 14px;
@@ -37,73 +37,6 @@ interface SelectionProps {
 }
 
 const Selection: React.FC<SelectionProps> = ({ selection }) => {
-  const contracts = [
-    {
-      id: '124-abc',
-      contract_information: {
-        pnr: '19800101-0000',
-        name: 'Kalle Ankka',
-        address: 'Vägen 1',
-      },
-      population_registration_information: {
-        pnr: '19800101-0000',
-        name: 'Kalle Ankka',
-        address: 'Vägen 1',
-      },
-      last_population_registration_lookup: new Date(),
-      status: 'VERIFIED',
-      comment: '',
-    },
-    {
-      id: '124-abc',
-      contract_information: {
-        pnr: '19800101-0000',
-        name: 'Kalle Ankka',
-        address: 'Vägen 1',
-      },
-      population_registration_information: {
-        pnr: '19800101-0000',
-        name: 'Kalle Ankka',
-        address: 'Stigen 2',
-      },
-      last_population_registration_lookup: new Date(),
-      status: 'INVALID',
-      comment: '',
-    },
-    {
-      id: '124-abc',
-      contract_information: {
-        pnr: '19800101-0000',
-        name: 'Kalle Ankka',
-        address: 'Vägen 1',
-      },
-      population_registration_information: {
-        pnr: '19800101-0000',
-        name: 'Kalle Ankka',
-        address: 'Vägen 1',
-      },
-      last_population_registration_lookup: new Date(),
-      status: 'MANUALLY_VERIFIED',
-      comment: '',
-    },
-    {
-      id: '124-abc',
-      contract_information: {
-        pnr: '19800101-0000',
-        name: 'Kalle Ankka',
-        address: 'Vägen 1',
-      },
-      population_registration_information: {
-        pnr: '19800101-0000',
-        name: 'Kalle Ankka',
-        address: 'Gatan 1',
-      },
-      last_population_registration_lookup: new Date(),
-      status: 'UNDER_INVESTIGATION',
-      comment: 'Håller på att kolla på de.',
-    },
-  ]
-
   return (
     <>
       <h1>{selection?.name}</h1>
@@ -117,20 +50,18 @@ const Selection: React.FC<SelectionProps> = ({ selection }) => {
       </div>
       <List>
         <ListHeader>
-          <Column>Kontrakt</Column>
           <Column>Namn</Column>
           <Column>Gatuadress</Column>
           <Column>Syna-adress</Column>
           <Column>Status</Column>
           <Column>Kommentar</Column>
         </ListHeader>
-        {contracts.map((contract: any, i: number) => (
+        {selection?.contracts.map((contract: any, i: number) => (
           <Contract key={`contract-${i}`}>
-            <Column>{contract.id}</Column>
             <Column>{contract.contract_information.name}</Column>
-            <Column>{contract.contract_information.address}</Column>
+            <Column>{contract.contract_information?.address}</Column>
             <Column>
-              {contract.population_registration_information.address}
+              {contract.population_registration_information?.address}
             </Column>
             <Column>
               <ContractStatus status={contract.status} />

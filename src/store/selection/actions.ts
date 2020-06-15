@@ -39,6 +39,9 @@ export const getSelection = (id: string) => async (
   try {
     const { token } = getState().system
     const { data } = await get(`/selection/${id}`, token)
+    const contracts = await get(`/selection/${id}/contracts`, token)
+
+    data.contracts = contracts.data
 
     dispatch({
       type: FETCH_SELECTION,
