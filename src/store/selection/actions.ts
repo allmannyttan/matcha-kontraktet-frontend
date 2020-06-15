@@ -71,7 +71,12 @@ export const createNewSelection = (
       token
     )
     console.log(newSelection)
-    await get(`/selection/${newSelection.data.id}/fetch-contracts`, token)
+    const fetchContracts = await get(
+      `/selection/${newSelection.data.id}/fetch-contracts`,
+      token
+    )
+    console.log(fetchContracts)
+
     const { data } = await get('/selection', token)
 
     dispatch({
