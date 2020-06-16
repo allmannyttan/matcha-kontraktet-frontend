@@ -41,6 +41,12 @@ export const LinkButton = styled(RouterLink)`
   text-decoration: none;
 `
 
+export const SecondarLinkButton = styled(LinkButton)`
+  color: #000000;
+  background-color: #dddddd;
+  border-color: #cccccc;
+`
+
 export const ErrorMessage = styled(FormikErrorMessage)`
   color: red;
   text-align: left;
