@@ -8,7 +8,6 @@ import {
   ErrorMessage,
 } from '../../components/FormElements'
 import { createNewSelection } from '../../store/selection/actions'
-import history from '../../utils/history'
 import { SelectionState } from '../../store/selection/types'
 import Loader from '../../components/Loader'
 import styled from 'styled-components'
@@ -38,7 +37,7 @@ const CreateSelection: React.FC<CreateSelectionProps> = ({
     return (
       <LoaderWrapper>
         <Loader />
-        <div>Skapar urval</div>
+        <div>Hämtar kontrakt. Detta kan ta en liten stund.</div>
       </LoaderWrapper>
     )
   }
@@ -51,7 +50,6 @@ const CreateSelection: React.FC<CreateSelectionProps> = ({
         validationSchema={CreateSelectionSchema}
         onSubmit={async (input) => {
           await createNewSelection(input.selection_term, input.name)
-          history.push('/')
         }}
       >
         <Form>

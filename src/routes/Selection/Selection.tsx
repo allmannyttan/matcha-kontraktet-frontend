@@ -3,6 +3,13 @@ import { Selection as SelectionType } from '../../store/selection/types'
 import styled from 'styled-components'
 import ContractStatus from '../../components/ContractStatus'
 import { format } from 'date-fns'
+import { Button } from '../../components/FormElements'
+import { checkPopulationRegistraion } from '../../store/selection/actions'
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
 
 const List = styled.ul`
   margin: 20px 0 0 0;
@@ -11,10 +18,11 @@ const List = styled.ul`
 
 const Contract = styled.li`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+  grid-template-columns: 1fr 2fr 2fr 1fr 2fr;
+  grid-column-gap: 10px;
   padding: 15px 10px;
   color: rgb(40, 40, 40);
-  font-size: 14px;
+  font-size: 12px;
 
   &:nth-child(even) {
     background-color: rgb(245, 245, 245);
@@ -34,20 +42,32 @@ const Column = styled.div`
 
 interface SelectionProps {
   selection: SelectionType | null
+  checkPopulationRegistraion: typeof checkPopulationRegistraion
 }
 
-const Selection: React.FC<SelectionProps> = ({ selection }) => {
+const Selection: React.FC<SelectionProps> = ({
+  selection,
+  checkPopulationRegistraion,
+}) => {
   return (
     <>
       <h1>{selection?.name}</h1>
-      <div>
-        <strong>Sökterm:</strong> {selection?.selection_term}
-      </div>
-      <div>
-        <strong>Skapad av:</strong> {selection?.created_by},{' '}
-        {selection?.created_at &&
-          format(new Date(selection.created_at), 'yyyy-MM-dd HH:mm')}
-      </div>
+      <Header>
+        <div>
+          <div>
+            <strong>Sökterm:</strong> {selection?.selection_term}
+          </div>
+          <div>
+            <strong>Skapad av:</strong> {selection?.created_by},{' '}
+            {selection?.created_at &&
+              format(new Date(selection.created_at), 'yyyy-MM-dd HH:mm')}
+          </div>
+        </div>
+        <Button onClick={() => checkPopulationRegistraion(selection?.id)}>
+          Gör slagning mot folkbokföring
+        </Button>
+      </Header>
+
       <List>
         <ListHeader>
           <Column>Namn</Column>

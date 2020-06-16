@@ -3,15 +3,20 @@ import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { State } from '../../store/types'
 import Selection from './Selection'
-import { getSelection } from '../../store/selection/actions'
+import {
+  getSelection,
+  checkPopulationRegistraion,
+} from '../../store/selection/actions'
 
 interface SelectionContainerProps extends State {
   getSelection: typeof getSelection
+  checkPopulationRegistraion: typeof checkPopulationRegistraion
 }
 
 const SelectionContainer: React.FC<SelectionContainerProps> = ({
   selection,
   getSelection,
+  checkPopulationRegistraion,
 }) => {
   const { selectionId } = useParams()
 
@@ -21,13 +26,20 @@ const SelectionContainer: React.FC<SelectionContainerProps> = ({
     })()
   }, [getSelection, selectionId])
 
-  return <Selection selection={selection.selection} />
+  return (
+    <Selection
+      selection={selection.selection}
+      checkPopulationRegistraion={checkPopulationRegistraion}
+    />
+  )
 }
 
 const mapStateToProps = (state: State) => state
 
 const mapDispatchToProps = (dispatch: any) => ({
   getSelection: (id: string) => dispatch(getSelection(id)),
+  checkPopulationRegistraion: (id?: string) =>
+    dispatch(checkPopulationRegistraion(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectionContainer)
