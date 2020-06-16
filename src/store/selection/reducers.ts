@@ -10,7 +10,15 @@ import {
 const initialState: SelectionState = {
   isFetching: false,
   selections: [],
-  selection: null,
+  selection: {
+    id: '',
+    name: '',
+    selection_term: '',
+    contracts: [],
+    last_population_registration_lookup: null,
+    created_by: '',
+    created_at: new Date(),
+  },
 }
 
 export function selectionReducer(

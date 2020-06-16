@@ -1,7 +1,7 @@
 export interface SelectionState {
   isFetching: boolean
   selections: Selection[]
-  selection: Selection | null
+  selection: Selection
 }
 
 export enum ContractStatus {

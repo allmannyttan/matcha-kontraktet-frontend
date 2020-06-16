@@ -40,8 +40,13 @@ const Column = styled.div`
   align-items: center;
 `
 
+const EmptyState = styled.div`
+  margin-top: 30px;
+  font-weight: 700;
+`
+
 interface SelectionProps {
-  selection: SelectionType | null
+  selection: SelectionType
   checkPopulationRegistraion: typeof checkPopulationRegistraion
 }
 
@@ -51,33 +56,33 @@ const Selection: React.FC<SelectionProps> = ({
 }) => {
   return (
     <>
-      <h1>{selection?.name}</h1>
+      <h1>{selection.name}</h1>
       <Header>
         <div>
           <div>
-            <strong>Sökterm:</strong> {selection?.selection_term}
+            <strong>Sökterm:</strong> {selection.selection_term}
           </div>
           <div>
-            <strong>Skapad av:</strong> {selection?.created_by},{' '}
-            {selection?.created_at &&
+            <strong>Skapad av:</strong> {selection.created_by},{' '}
+            {selection.created_at &&
               format(new Date(selection.created_at), 'yyyy-MM-dd HH:mm')}
           </div>
         </div>
-        <Button onClick={() => checkPopulationRegistraion(selection?.id)}>
+        <Button onClick={() => checkPopulationRegistraion(selection.id)}>
           Gör slagning mot folkbokföring
         </Button>
       </Header>
 
-      <List>
-        <ListHeader>
-          <Column>Namn</Column>
-          <Column>Gatuadress</Column>
-          <Column>Syna-adress</Column>
-          <Column>Status</Column>
-          <Column>Kommentar</Column>
-        </ListHeader>
-        {selection?.contracts ? (
-          selection?.contracts.map((contract: any, i: number) => (
+      {selection.contracts.length > 0 ? (
+        <List>
+          <ListHeader>
+            <Column>Namn</Column>
+            <Column>Gatuadress</Column>
+            <Column>Syna-adress</Column>
+            <Column>Status</Column>
+            <Column>Kommentar</Column>
+          </ListHeader>
+          {selection.contracts.map((contract: any, i: number) => (
             <Contract key={`contract-${i}`}>
               <Column>{contract.contract_information.name}</Column>
               <Column>{contract.contract_information?.address}</Column>
@@ -89,11 +94,11 @@ const Selection: React.FC<SelectionProps> = ({
               </Column>
               <Column>{contract.comment}</Column>
             </Contract>
-          ))
-        ) : (
-          <div>Inga kontrakt hittades.</div>
-        )}
-      </List>
+          ))}
+        </List>
+      ) : (
+        <EmptyState>Inga kontrakt matchade.</EmptyState>
+      )}
     </>
   )
 }
