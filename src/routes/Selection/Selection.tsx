@@ -76,19 +76,23 @@ const Selection: React.FC<SelectionProps> = ({
           <Column>Status</Column>
           <Column>Kommentar</Column>
         </ListHeader>
-        {selection?.contracts.map((contract: any, i: number) => (
-          <Contract key={`contract-${i}`}>
-            <Column>{contract.contract_information.name}</Column>
-            <Column>{contract.contract_information?.address}</Column>
-            <Column>
-              {contract.population_registration_information?.address}
-            </Column>
-            <Column>
-              <ContractStatus status={contract.status} />
-            </Column>
-            <Column>{contract.comment}</Column>
-          </Contract>
-        ))}
+        {selection?.contracts ? (
+          selection?.contracts.map((contract: any, i: number) => (
+            <Contract key={`contract-${i}`}>
+              <Column>{contract.contract_information.name}</Column>
+              <Column>{contract.contract_information?.address}</Column>
+              <Column>
+                {contract.population_registration_information?.address}
+              </Column>
+              <Column>
+                <ContractStatus status={contract.status} />
+              </Column>
+              <Column>{contract.comment}</Column>
+            </Contract>
+          ))
+        ) : (
+          <div>Inga kontrakt hittades.</div>
+        )}
       </List>
     </>
   )
