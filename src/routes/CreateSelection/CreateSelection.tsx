@@ -19,6 +19,11 @@ const LoaderWrapper = styled.div`
   margin: 30px 0;
 `
 
+const Error = styled.div`
+  color: red;
+  margin-bottom: 20px;
+`
+
 const CreateSelectionSchema = Yup.object().shape({
   selection_term: Yup.string().required('Obligatorisk'),
   name: Yup.string().required('Obligatorisk'),
@@ -48,7 +53,7 @@ const CreateSelection: React.FC<CreateSelectionProps> = ({
       <Formik
         initialValues={{ selection_term: '', name: '' }}
         validationSchema={CreateSelectionSchema}
-        onSubmit={async (input) => {
+        onSubmit={async (input, { setFieldError }) => {
           await createNewSelection(input.selection_term, input.name)
         }}
       >
@@ -62,6 +67,7 @@ const CreateSelection: React.FC<CreateSelectionProps> = ({
           <ErrorMessage component="div" name="selection_term" />
           <Input id="name" name="name" type="text" placeholder="Namn" />
           <ErrorMessage component="div" name="name" />
+          {selection.hasError && <Error>{selection.errorMessage}</Error>}
           <Button type="submit">Skapa</Button>
         </Form>
       </Formik>

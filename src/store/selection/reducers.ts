@@ -3,6 +3,7 @@ import {
   FETCH_SELECTION,
   FETCHING_SELECTION,
   CREATE_SELECTION,
+  SELECTION_ERROR,
   SelectionState,
   SelectionActionTypes,
 } from './types'
@@ -19,6 +20,8 @@ const initialState: SelectionState = {
     created_by: '',
     created_at: new Date(),
   },
+  hasError: false,
+  errorMessage: '',
 }
 
 export function selectionReducer(
@@ -45,6 +48,13 @@ export function selectionReducer(
       return {
         ...state,
         selection: action.payload,
+      }
+    }
+    case SELECTION_ERROR: {
+      return {
+        ...state,
+        hasError: action.payload.hasError,
+        errorMessage: action.payload.errorMessage,
       }
     }
     default:

@@ -1,11 +1,26 @@
 import { ThunkDispatch } from 'redux-thunk'
 import { AnyAction } from 'redux'
-import { FETCH_SELECTIONS, FETCH_SELECTION, FETCHING_SELECTION } from './types'
+import {
+  FETCH_SELECTIONS,
+  FETCH_SELECTION,
+  FETCHING_SELECTION,
+  SELECTION_ERROR,
+} from './types'
 import { get, post } from '../../utils/fetch'
 import history from '../../utils/history'
 
 export const isFetching = (isFetching: boolean) => {
   return { type: FETCHING_SELECTION, isFetching }
+}
+
+export const error = (hasError: boolean, errorMessage: string) => {
+  return {
+    type: SELECTION_ERROR,
+    payload: {
+      hasError,
+      errorMessage,
+    },
+  }
 }
 
 export const getSelections = () => async (
@@ -61,6 +76,7 @@ export const createNewSelection = (
   selection_term: string,
   name: string
 ) => async (dispatch: ThunkDispatch<{}, {}, AnyAction>, getState: any) => {
+  dispatch(error(false, ''))
   dispatch(isFetching(true))
 
   try {
@@ -90,6 +106,8 @@ export const createNewSelection = (
   } catch (err) {
     // TODO: show error to user
     console.log(err)
+    dispatch(isFetching(false))
+    dispatch(error(true, 'Något gick fel. Prova igen.'))
   }
 }
 

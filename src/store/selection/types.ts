@@ -2,6 +2,8 @@ export interface SelectionState {
   isFetching: boolean
   selections: Selection[]
   selection: Selection
+  hasError: boolean
+  errorMessage: string
 }
 
 export enum ContractStatus {
@@ -46,6 +48,7 @@ export const FETCH_SELECTIONS = 'FETCH_SELECTIONS'
 export const FETCH_SELECTION = 'FETCH_SELECTION'
 export const FETCHING_SELECTION = 'FETCHING_SELECTION'
 export const CREATE_SELECTION = 'CREATE_SELECTION'
+export const SELECTION_ERROR = 'SELECTION_ERROR'
 
 interface FetchSelectionsAction {
   type: typeof FETCH_SELECTIONS
@@ -67,8 +70,14 @@ interface CreateSelectionAction {
   [payload: string]: any
 }
 
+interface SelectionErrorAction {
+  type: typeof SELECTION_ERROR
+  [payload: string]: any
+}
+
 export type SelectionActionTypes =
   | FetchSelectionsAction
   | FetchSelectionAction
   | FetchingSelectionAction
   | CreateSelectionAction
+  | SelectionErrorAction
