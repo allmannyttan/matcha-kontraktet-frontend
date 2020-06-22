@@ -12,6 +12,7 @@ import {
   Label,
 } from '../../components/FormElements'
 import Loader from '../../components/Loader'
+import history from '../../utils/history'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -39,6 +40,15 @@ const Error = styled.div`
   margin-bottom: 20px;
 `
 
+const Back = styled.a`
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    opacity: 0.6;
+  }
+`
+
 const CreateSelectionSchema = Yup.object().shape({
   status: Yup.string().required('Obligatorisk'),
   comment: Yup.string(),
@@ -60,6 +70,7 @@ const Contract: React.FC<ContractProps> = ({ contract, updateContract }) => {
 
   return (
     <Wrapper>
+      <Back onClick={history.goBack}>&larr; Tillbaka</Back>
       <h1>Uppdatera kontrakt</h1>
       <Info>
         <strong>Kontrakt innehavare:</strong>{' '}
