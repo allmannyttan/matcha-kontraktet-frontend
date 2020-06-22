@@ -8,6 +8,7 @@ import {
 } from './types'
 import { get, post } from '../../utils/fetch'
 import history from '../../utils/history'
+import { sortByStatus } from '../../utils/contract'
 
 export const isFetching = (isFetching: boolean) => {
   return { type: FETCHING_SELECTION, isFetching }
@@ -57,7 +58,7 @@ export const getSelection = (id: string) => async (
     const { data } = await get(`/selection/${id}`, token)
     const contracts = await get(`/selection/${id}/contracts`, token)
 
-    data.contracts = contracts.data
+    data.contracts = sortByStatus(contracts.data)
 
     dispatch({
       type: FETCH_SELECTION,

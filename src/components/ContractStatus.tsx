@@ -31,7 +31,7 @@ const translateStatus = (status: string): string => {
     case 'MANUALLY_VERIFIED':
       return 'Manuellt godkänd'
     case 'UNDER_INVESTIGATION':
-      return 'Under åtgärd'
+      return 'Under utredning'
     default:
       return 'Verifierad'
   }
