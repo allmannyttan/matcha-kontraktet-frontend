@@ -9,6 +9,7 @@ import {
   deleteSelection,
 } from '../../store/selection/actions'
 import { Link } from 'react-router-dom'
+import BackButton from '../../components/BackButton'
 
 const Header = styled.div`
   display: flex;
@@ -78,6 +79,7 @@ const Selection: React.FC<SelectionProps> = ({
 }) => {
   return (
     <>
+      <BackButton />
       <h1>{selection.name}</h1>
       <Header>
         <div>
