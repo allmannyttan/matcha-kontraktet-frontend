@@ -27,13 +27,13 @@ interface ContractStatusProps {
 const translateStatus = (status: string): string => {
   switch (status) {
     case 'INVALID':
-      return 'Icke godkänd'
+      return 'Kontrollera'
     case 'MANUALLY_VERIFIED':
       return 'Manuellt godkänd'
     case 'UNDER_INVESTIGATION':
-      return 'Under utredning'
+      return 'Under åtgärd'
     default:
-      return 'Godkänd'
+      return 'Verifierad'
   }
 }
 

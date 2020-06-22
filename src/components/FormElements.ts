@@ -21,9 +21,11 @@ export const Input = styled(Field)`
 export const Button = styled.button`
   color: #ffffff;
   background-color: #2696a8;
-  border-color: #218393;
+  border: 1px solid #218393;
   padding: 15px;
   font-size: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 `
 
 export const SecondaryButton = styled(Button)`
@@ -35,7 +37,7 @@ export const SecondaryButton = styled(Button)`
 export const LinkButton = styled(RouterLink)`
   color: #ffffff;
   background-color: #2696a8;
-  border-color: #218393;
+  border: 1px solid #218393;
   padding: 15px;
   font-size: 14px;
   text-decoration: none;
@@ -61,4 +63,9 @@ export const Link = styled.a`
   &:hover {
     opacity: 0.7;
   }
+`
+
+export const Label = styled.label`
+  font-weight: 700;
+  margin-bottom: 5px;
 `

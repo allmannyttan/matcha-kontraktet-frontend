@@ -3,11 +3,13 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { systemReducer } from './system/reducers'
 import { selectionReducer } from './selection/reducers'
+import { contractReducer } from './contract/reducers'
 import thunk from 'redux-thunk'
 
 const rootReducer = combineReducers({
   system: systemReducer,
   selection: selectionReducer,
+  contract: contractReducer,
 })
 
 const persistConfig = {
