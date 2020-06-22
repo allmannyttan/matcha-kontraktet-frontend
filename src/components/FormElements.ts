@@ -26,6 +26,12 @@ export const Button = styled.button`
   font-size: 14px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `
 
 export const SecondaryButton = styled(Button)`

@@ -4,7 +4,10 @@ import styled from 'styled-components'
 import ContractStatus from '../../components/ContractStatus'
 import { format } from 'date-fns'
 import { Button } from '../../components/FormElements'
-import { checkPopulationRegistraion } from '../../store/selection/actions'
+import {
+  checkPopulationRegistraion,
+  deleteSelection,
+} from '../../store/selection/actions'
 import { Link } from 'react-router-dom'
 
 const Header = styled.div`
@@ -55,13 +58,22 @@ const EmptyState = styled.div`
   font-weight: 700;
 `
 
+const DeleteButton = styled(Button)`
+  background: rgb(245, 140, 140);
+  color: rgb(214, 62, 62);
+  border: 1px solid rgb(214, 62, 62);
+  margin-right: 15px;
+`
+
 interface SelectionProps {
   selection: SelectionType
   checkPopulationRegistraion: typeof checkPopulationRegistraion
+  deleteSelection: typeof deleteSelection
 }
 
 const Selection: React.FC<SelectionProps> = ({
   selection,
+  deleteSelection,
   checkPopulationRegistraion,
 }) => {
   return (
@@ -78,9 +90,14 @@ const Selection: React.FC<SelectionProps> = ({
               format(new Date(selection.created_at), 'yyyy-MM-dd HH:mm')}
           </div>
         </div>
-        <Button onClick={() => checkPopulationRegistraion(selection.id)}>
-          Gör slagning mot folkbokföring
-        </Button>
+        <div>
+          <DeleteButton onClick={() => deleteSelection(selection.id)}>
+            Ta bort urval
+          </DeleteButton>
+          <Button onClick={() => checkPopulationRegistraion(selection.id)}>
+            Gör slagning mot folkbokföring
+          </Button>
+        </div>
       </Header>
 
       {selection.contracts.length > 0 ? (

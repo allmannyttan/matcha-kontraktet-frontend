@@ -6,7 +6,7 @@ import {
   FETCHING_SELECTION,
   SELECTION_ERROR,
 } from './types'
-import { get, post } from '../../utils/fetch'
+import { get, post, del } from '../../utils/fetch'
 import history from '../../utils/history'
 import { sortByStatus } from '../../utils/contract'
 
@@ -139,5 +139,31 @@ export const checkPopulationRegistraion = (id?: string) => async (
   } catch (err) {
     // TODO: show error to user
     console.log(err)
+  }
+}
+
+export const deleteSelection = (id: string) => async (
+  dispatch: ThunkDispatch<{}, {}, AnyAction>,
+  getState: any
+) => {
+  dispatch(isFetching(true))
+
+  try {
+    const { token } = getState().system
+    await del(`/selection/${id}`, token)
+    const { data } = await get('/selection', token)
+
+    dispatch({
+      type: FETCH_SELECTIONS,
+      payload: data,
+    })
+
+    history.push('/')
+
+    dispatch(isFetching(false))
+  } catch (err) {
+    // TODO: show error to user
+    console.log(err)
+    dispatch(isFetching(false))
   }
 }
