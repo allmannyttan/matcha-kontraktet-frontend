@@ -105,7 +105,7 @@ const Contract: React.FC<ContractProps> = ({ contract, updateContract }) => {
             <option value="VERIFIED">Verifierad</option>
             <option value="INVALID">Kontrollera</option>
             <option value="MANUALLY_VERIFIED">Manuellt godkänd</option>
-            <option value="UNDER_INVESTIGATION">Under åtgärd</option>
+            <option value="UNDER_INVESTIGATION">Under utredning</option>
           </Input>
           <ErrorMessage component="div" name="status" />
           <Label>Kommentar</Label>
