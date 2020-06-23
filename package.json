@@ -52,7 +52,6 @@
   },
   "devDependencies": {
     "@iteam/eslint-config-react": "0.2.0",
-    "@semantic-release/changelog": "5.0.1",
     "@types/jwt-decode": "^2.2.1",
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",
