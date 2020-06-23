@@ -79,7 +79,7 @@ const Selection: React.FC<SelectionProps> = ({
 }) => {
   return (
     <>
-      <BackButton />
+      <BackButton to="/" />
       <h1>{selection.name}</h1>
       <Header>
         <div>
@@ -112,7 +112,10 @@ const Selection: React.FC<SelectionProps> = ({
             <Column>Kommentar</Column>
           </ListHeader>
           {selection.contracts.map((contract: any, i: number) => (
-            <Contract key={`contract-${i}`} to={`/kontrakt/${contract.id}`}>
+            <Contract
+              key={`contract-${i}`}
+              to={`/kontrakt/${contract.id}?selectionId=${selection.id}`}
+            >
               <Column>{contract.contract_information.name}</Column>
               <Column>{contract.contract_information?.address}</Column>
               <Column>

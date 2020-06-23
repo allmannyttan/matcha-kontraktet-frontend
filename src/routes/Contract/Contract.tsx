@@ -14,6 +14,8 @@ import {
 import Loader from '../../components/Loader'
 import BackButton from '../../components/BackButton'
 import styled from 'styled-components'
+import { useLocation } from 'react-router'
+import queryString from 'query-string'
 
 const Wrapper = styled.div`
   max-width: 600px;
@@ -51,6 +53,9 @@ interface ContractProps {
 }
 
 const Contract: React.FC<ContractProps> = ({ contract, updateContract }) => {
+  const location = useLocation()
+  const { selectionId } = queryString.parse(location.search)
+
   if (contract.isFetching) {
     return (
       <LoaderWrapper>
@@ -61,7 +66,7 @@ const Contract: React.FC<ContractProps> = ({ contract, updateContract }) => {
 
   return (
     <Wrapper>
-      <BackButton />
+      <BackButton to={`/urval/${selectionId}`} />
       <h1>Uppdatera kontrakt</h1>
       <Info>
         <strong>Kontrakt innehavare:</strong>{' '}
