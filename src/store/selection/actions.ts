@@ -128,7 +128,7 @@ export const checkPopulationRegistraion = (id?: string) => async (
     await get(`/selection/${id}/sync-population-registration`, token)
     const { data } = await get(`/selection/${id}/contracts`, token)
 
-    selection.contracts = data
+    selection.contracts = sortByStatus(data)
 
     dispatch({
       type: FETCH_SELECTION,

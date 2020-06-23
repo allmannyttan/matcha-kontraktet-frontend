@@ -40,6 +40,10 @@ const translateStatus = (status: string): string => {
 const ContractStatus: React.FC<ContractStatusProps> = ({ status }) => {
   const tanslatedStatus = translateStatus(status)
 
+  if (!status) {
+    return null
+  }
+
   if (status === 'INVALID') {
     return <StatusBarInvalid>{tanslatedStatus}</StatusBarInvalid>
   }
