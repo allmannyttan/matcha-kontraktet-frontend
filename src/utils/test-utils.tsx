@@ -1,9 +1,12 @@
 import React from 'react'
 import { render as rtlRender } from '@testing-library/react'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { rootReducer } from '../store/index'
 import { Router } from 'react-router-dom'
+import thunk from 'redux-thunk'
+
+import history from './history'
 
 const reducerInitialState = {
   contract: {
@@ -54,13 +57,13 @@ function render(
   ui: any,
   {
     initialState = reducerInitialState,
-    store = createStore(rootReducer, initialState),
+    store = createStore(rootReducer, applyMiddleware(thunk)),
     ...renderOptions
   }: any = {}
 ) {
   function Wrapper({ children }: any) {
     return (
-      <Router>
+      <Router history={history}>
         <Provider store={store}>{children}</Provider>
       </Router>
     )
