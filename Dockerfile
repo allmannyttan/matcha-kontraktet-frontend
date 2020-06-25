@@ -17,4 +17,4 @@ COPY --from=build /app/build /usr/share/nginx/html
 COPY changeurl.sh /
 
 EXPOSE 80
-CMD /bin/sh -c "/changeurl.sh" && nginx -g daemon off;
+CMD /bin/sh -c "/start.sh"
