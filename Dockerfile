@@ -14,7 +14,7 @@ FROM nginx:1.16.0-alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/build /usr/share/nginx/html
-COPY changeurl.sh /
+COPY start.sh /
 
 EXPOSE 80
 CMD /bin/sh -c "/start.sh"
