@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . /app
-ARG REACT_APP_API_BASE_URL
+ARG REACT_APP_API_BASE_URL=http://backend:9000
 RUN env
 RUN npm run build
 
