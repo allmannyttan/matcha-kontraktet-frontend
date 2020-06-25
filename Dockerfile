@@ -14,7 +14,7 @@ FROM nginx:1.16.0-alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/build /usr/share/nginx/html
-COPY changeurl.sh ./
+COPY changeurl.sh /
 
 EXPOSE 80
-CMD "/bin/sh /changeurl.sh && nginx -g daemon off;"
+CMD /bin/sh -c "/changeurl.sh" && nginx -g daemon off;
