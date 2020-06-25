@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . /app
-ARG REACT_APP_API_BASE_URL=http://wrong:9000
+ENV REACT_APP_API_BASE_URL=http://replace-this-url
 RUN env
 RUN npm run build
 
@@ -14,8 +14,7 @@ FROM nginx:1.16.0-alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/build /usr/share/nginx/html
-
-ENV REACT_APP_API_BASE_URL=http://right:9000
+COPY changeurl.sh ./
 
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD "/bin/sh /changeurl.sh && nginx -g daemon off;"
