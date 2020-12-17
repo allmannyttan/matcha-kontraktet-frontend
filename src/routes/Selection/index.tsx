@@ -21,7 +21,7 @@ const SelectionContainer: React.FC<SelectionContainerProps> = ({
   deleteSelection,
   checkPopulationRegistraion,
 }) => {
-  const { selectionId } = useParams();
+  const { selectionId } = useParams<{ selectionId: string }>();
 
   useEffect(() => {
     (async function anyNameFunction() {

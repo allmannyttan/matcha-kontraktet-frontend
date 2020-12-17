@@ -4,6 +4,7 @@ import {
   ContractStatus as ContractStatuses,
 } from "../../store/contract/types";
 import { updateContract } from "../../store/contract/actions";
+import { format } from "date-fns";
 import ContractStatus, {
   translateStatus,
 } from "../../components/ContractStatus";
@@ -74,13 +75,22 @@ const Contract: React.FC<ContractProps> = ({ contract, updateContract }) => {
       <BackButton to={`/urval/${selectionId}`} />
       <h1>Uppdatera kontrakt</h1>
       <Info>
-        <strong>Kontrakt innehavare:</strong>{" "}
+        <strong>Innehavare:</strong>{" "}
         {contract.contract.contract_information?.name}{" "}
         <ContractStatus status={contract.contract.status} />
       </Info>
       <Info>
-        <strong>Kontraktadress:</strong>{" "}
+        <strong>Adress:</strong>{" "}
         {contract.contract.contract_information?.address}
+      </Info>
+      <Info>
+        <strong>Avtalsnummer:</strong> {contract.contract.contract_id}
+      </Info>
+      <Info>
+        <strong>Datum:</strong>{" "}
+        {contract.contract.start_date
+          ? format(new Date(contract.contract.start_date), "yyyy-MM-dd")
+          : ""}
       </Info>
       <Info>
         <strong>Folkbokföringsadress:</strong>{" "}
@@ -88,7 +98,7 @@ const Contract: React.FC<ContractProps> = ({ contract, updateContract }) => {
       </Info>
       <Formik
         initialValues={{
-          status: contract.contract.status,
+          status: contract.contract.status || "",
           comment: contract.contract.comment || "",
         }}
         validationSchema={CreateSelectionSchema}

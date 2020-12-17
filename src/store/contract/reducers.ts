@@ -6,30 +6,32 @@ import {
   ContractState,
   SelectionActionTypes,
   ContractStatus,
-} from './types'
+} from "./types";
 
 const initialState: ContractState = {
   isFetching: false,
   updateSuccess: false,
   contract: {
-    id: '',
+    id: "",
     contract_information: {
-      pnr: '',
-      name: '',
-      address: '',
+      pnr: "",
+      name: "",
+      address: "",
     },
     population_registration_information: {
-      pnr: '',
-      name: '',
-      address: '',
+      pnr: "",
+      name: "",
+      address: "",
     },
     last_population_registration_lookup: null,
     status: ContractStatus.VERIFIED,
-    comment: '',
+    comment: "",
+    start_date: null,
+    contract_id: "",
   },
   hasError: false,
-  errorMessage: '',
-}
+  errorMessage: "",
+};
 
 export function contractReducer(
   state = initialState,
@@ -37,28 +39,28 @@ export function contractReducer(
 ): ContractState {
   switch (action.type) {
     case FETCHING_CONTRACT: {
-      return { ...state, isFetching: action.isFetching }
+      return { ...state, isFetching: action.isFetching };
     }
     case FETCH_CONTRACT: {
       return {
         ...state,
         contract: action.payload,
-      }
+      };
     }
     case CONTRACT_ERROR: {
       return {
         ...state,
         hasError: action.payload.hasError,
         errorMessage: action.payload.errorMessage,
-      }
+      };
     }
     case UPDATED_CONTRACT: {
       return {
         ...state,
         updateSuccess: action.updateSuccess,
-      }
+      };
     }
     default:
-      return state
+      return state;
   }
 }

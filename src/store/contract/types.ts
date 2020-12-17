@@ -32,6 +32,8 @@ export interface Contract {
   population_registration_information: PopulationRegistrationInformation;
   last_population_registration_lookup: Date | null;
   status: ContractStatus;
+  start_date: Date | null;
+  contract_id: string;
   comment: string;
 }
 
