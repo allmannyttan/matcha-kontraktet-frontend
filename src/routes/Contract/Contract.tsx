@@ -1,7 +1,12 @@
 import React from "react";
-import { ContractState } from "../../store/contract/types";
+import {
+  ContractState,
+  ContractStatus as ContractStatuses,
+} from "../../store/contract/types";
 import { updateContract } from "../../store/contract/actions";
-import ContractStatus from "../../components/ContractStatus";
+import ContractStatus, {
+  translateStatus,
+} from "../../components/ContractStatus";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import {
@@ -98,10 +103,11 @@ const Contract: React.FC<ContractProps> = ({ contract, updateContract }) => {
         <Form>
           <Label>Status</Label>
           <Input component="select" name="status">
-            <option value="VERIFIED">Verifierad</option>
-            <option value="INVALID">Kontrollera</option>
-            <option value="MANUALLY_VERIFIED">Manuellt godkänd</option>
-            <option value="UNDER_INVESTIGATION">Under utredning</option>
+            {Object.keys(ContractStatuses).map((key, i) => (
+              <option key={i} value={key}>
+                {translateStatus(key)}
+              </option>
+            ))}
           </Input>
           <ErrorMessage component="div" name="status" />
           <Label>Kommentar</Label>

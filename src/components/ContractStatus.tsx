@@ -24,7 +24,7 @@ interface ContractStatusProps {
   status: string;
 }
 
-const translateStatus = (status: string): string => {
+export const translateStatus = (status: string): string => {
   switch (status) {
     case "INVALID":
       return "Kontrollera";
@@ -32,6 +32,8 @@ const translateStatus = (status: string): string => {
       return "Manuellt godkänd";
     case "UNDER_INVESTIGATION":
       return "Under utredning";
+    case "VERIFIED_SUBLETTING":
+      return "Godkänd andrahandsuthyrning";
     default:
       return "Verifierad";
   }

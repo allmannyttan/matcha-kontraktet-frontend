@@ -4,6 +4,7 @@ export const sortByStatus = (contracts: Contract[]) => {
   const sortOrder = [
     "INVALID",
     "UNDER_INVESTIGATION",
+    "VERIFIED_SUBLETTING",
     "MANUALLY_VERIFIED",
     "VERIFIED",
     null,
