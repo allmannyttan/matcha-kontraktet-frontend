@@ -1,7 +1,7 @@
-import React from 'react'
-import { Selection } from '../../store/selection/types'
-import SelectionListItem from './SelectionListItem'
-import styled from 'styled-components'
+import React from "react";
+import { Selection } from "../../store/selection/types";
+import SelectionListItem from "./SelectionListItem";
+import styled from "styled-components";
 
 const Header = styled.div`
   background-color: rgb(230, 230, 230);
@@ -11,10 +11,10 @@ const Header = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
   padding: 10px;
-`
+`;
 
 interface SelectionListProps {
-  selections: Selection[]
+  selections: Selection[];
 }
 
 const SelectionList: React.FC<SelectionListProps> = ({ selections }) => {
@@ -23,7 +23,7 @@ const SelectionList: React.FC<SelectionListProps> = ({ selections }) => {
       <Header>
         <div>Namn</div>
         <div>Sökterm</div>
-        <div>Senaste körningen mot syna</div>
+        <div>Senaste körningen mot folkbokföring</div>
         <div>Skapad av</div>
         <div></div>
       </Header>
@@ -31,7 +31,7 @@ const SelectionList: React.FC<SelectionListProps> = ({ selections }) => {
         <SelectionListItem key={`selection-${i}`} selection={selection} />
       ))}
     </>
-  )
-}
+  );
+};
 
-export default SelectionList
+export default SelectionList;
