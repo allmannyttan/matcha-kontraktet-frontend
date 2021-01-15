@@ -38,11 +38,13 @@ export interface Contract {
 export interface Selection {
   id: string;
   name: string;
-  selection_term: string;
+  selection_term: string | null;
   contracts: Contract[];
   last_population_registration_lookup: Date | null;
   created_by: string;
   created_at: Date;
+  from: Date | null;
+  to: Date | null;
 }
 
 export const FETCH_SELECTIONS = "FETCH_SELECTIONS";

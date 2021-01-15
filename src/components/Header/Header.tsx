@@ -5,7 +5,7 @@ import Avatar from "../Avatar";
 import { Link } from "../FormElements";
 import { Link as RouterLink } from "react-router-dom";
 
-const { REACT_APP_API_BASE_URL, REACT_APP_LOGO } = process.env;
+const { REACT_APP_LOGO } = process.env;
 
 const Wrapper = styled.header`
   padding: 15px;

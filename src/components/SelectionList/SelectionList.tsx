@@ -9,7 +9,7 @@ const Header = styled.div`
   font-weight: 700;
   font-size: 14px;
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 2fr 1fr;
   padding: 10px;
 `;
 
@@ -25,7 +25,6 @@ const SelectionList: React.FC<SelectionListProps> = ({ selections }) => {
         <div>Sökterm</div>
         <div>Senaste körningen mot folkbokföring</div>
         <div>Skapad av</div>
-        <div></div>
       </Header>
       {selections.map((selection: Selection, i: number) => (
         <SelectionListItem key={`selection-${i}`} selection={selection} />

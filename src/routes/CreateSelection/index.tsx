@@ -1,11 +1,11 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { createNewSelection } from '../../store/selection/actions'
-import CreateSelection from './CreateSelection'
-import { State } from '../../store/types'
+import React from "react";
+import { connect } from "react-redux";
+import { createNewSelection } from "../../store/selection/actions";
+import CreateSelection from "./CreateSelection";
+import { State } from "../../store/types";
 
 interface CreateSelectionContainerProps extends State {
-  createNewSelection: typeof createNewSelection
+  createNewSelection: typeof createNewSelection;
 }
 
 const CreateSelectionContainer: React.FC<CreateSelectionContainerProps> = ({
@@ -17,17 +17,21 @@ const CreateSelectionContainer: React.FC<CreateSelectionContainerProps> = ({
       createNewSelection={createNewSelection}
       selection={selection}
     />
-  )
-}
+  );
+};
 
-const mapStateToProps = (state: State) => state
+const mapStateToProps = (state: State) => state;
 
 const mapDispatchToProps = (dispatch: any) => ({
-  createNewSelection: (selection_term: string, name: string) =>
-    dispatch(createNewSelection(selection_term, name)),
-})
+  createNewSelection: (
+    selection_term: string | null,
+    name: string,
+    from: Date | null,
+    to: Date | null
+  ) => dispatch(createNewSelection(selection_term, name, from, to)),
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CreateSelectionContainer)
+)(CreateSelectionContainer);

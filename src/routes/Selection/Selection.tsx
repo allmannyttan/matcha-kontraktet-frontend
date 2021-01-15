@@ -86,6 +86,14 @@ const Selection: React.FC<SelectionProps> = ({
           <strong>Sökterm:</strong> {selection.selection_term}
         </div>
         <div>
+          <strong>Sökdatum:</strong>{" "}
+          {`${
+            selection.from ? format(new Date(selection.from), "yyyy-MM-dd") : ""
+          } - ${
+            selection.to ? format(new Date(selection.to), "yyyy-MM-dd") : ""
+          }`}
+        </div>
+        <div>
           <strong>Skapad av:</strong> {selection.created_by},{" "}
           {selection.created_at &&
             format(new Date(selection.created_at), "yyyy-MM-dd HH:mm")}

@@ -74,20 +74,23 @@ export const getSelection = (id: string) => async (
 };
 
 export const createNewSelection = (
-  selection_term: string,
-  name: string
+  selection_term: string | null,
+  name: string,
+  from: Date | null,
+  to: Date | null
 ) => async (dispatch: ThunkDispatch<{}, {}, AnyAction>, getState: any) => {
   dispatch(error(false, ""));
   dispatch(isFetching(true));
 
   try {
     const { token } = getState().system;
-
     const newSelection = await post(
       `/selection`,
       {
-        selection_term,
+        selection_term: selection_term || undefined,
         name,
+        from: from ? new Date(from).toISOString() : undefined,
+        to: to ? new Date(to).toISOString() : undefined,
       },
       token
     );

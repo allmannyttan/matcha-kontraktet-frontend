@@ -6,23 +6,25 @@ import {
   SELECTION_ERROR,
   SelectionState,
   SelectionActionTypes,
-} from './types'
+} from "./types";
 
 const initialState: SelectionState = {
   isFetching: false,
   selections: [],
   selection: {
-    id: '',
-    name: '',
-    selection_term: '',
+    id: "",
+    name: "",
+    selection_term: "",
     contracts: [],
     last_population_registration_lookup: null,
-    created_by: '',
+    created_by: "",
     created_at: new Date(),
+    from: null,
+    to: null,
   },
   hasError: false,
-  errorMessage: '',
-}
+  errorMessage: "",
+};
 
 export function selectionReducer(
   state = initialState,
@@ -30,34 +32,34 @@ export function selectionReducer(
 ): SelectionState {
   switch (action.type) {
     case FETCHING_SELECTION: {
-      return { ...state, isFetching: action.isFetching }
+      return { ...state, isFetching: action.isFetching };
     }
     case FETCH_SELECTIONS: {
       return {
         ...state,
         selections: action.payload,
-      }
+      };
     }
     case FETCH_SELECTION: {
       return {
         ...state,
         selection: action.payload,
-      }
+      };
     }
     case CREATE_SELECTION: {
       return {
         ...state,
         selection: action.payload,
-      }
+      };
     }
     case SELECTION_ERROR: {
       return {
         ...state,
         hasError: action.payload.hasError,
         errorMessage: action.payload.errorMessage,
-      }
+      };
     }
     default:
-      return state
+      return state;
   }
 }
