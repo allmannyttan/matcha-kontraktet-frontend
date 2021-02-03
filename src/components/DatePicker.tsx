@@ -18,7 +18,7 @@ export const DatePickerField = ({ name, placeholder }: any) => {
   return (
     <Picker
       {...field}
-      dateFormat={"dd/MM/yyyy"}
+      dateFormat={"yyyy-MM-dd"}
       placeholderText={placeholder}
       selected={(field.value && new Date(field.value)) || null}
       onChange={(val) => {
