@@ -11,8 +11,9 @@ export const post = async (path: string, body: object, token?: string) => {
       body: JSON.stringify(body),
     });
 
-    if (response.status !== 200) {
-      throw new Error("something went wrong");
+    if (!response.ok) {
+      const body = await response.text();
+      throw new Error(`A ${response.status} error has occurred. ${body}`);
     }
 
     return response.json();
@@ -32,8 +33,9 @@ export const put = async (path: string, body: object, token?: string) => {
       body: JSON.stringify(body),
     });
 
-    if (response.status !== 200) {
-      throw new Error("something went wrong");
+    if (!response.ok) {
+      const body = await response.text();
+      throw new Error(`A ${response.status} error has occurred. ${body}`);
     }
 
     return response.json();
@@ -58,8 +60,14 @@ export const get = async (path: string, token?: string) => {
       history.push("/login");
     }
 
-    if (response.status !== 200) {
-      throw new Error("something went wrong");
+    if (!response.ok) {
+      throw new Error(
+        `A ${response.status} error has occurred. ${JSON.stringify(
+          parsedResponse,
+          null,
+          2
+        )}`
+      );
     }
 
     return parsedResponse;
@@ -84,8 +92,14 @@ export const del = async (path: string, token?: string) => {
       history.push("/login");
     }
 
-    if (response.status !== 200) {
-      throw new Error("something went wrong");
+    if (!response.ok) {
+      throw new Error(
+        `A ${response.status} error has occurred. ${JSON.stringify(
+          parsedResponse,
+          null,
+          2
+        )}`
+      );
     }
 
     return parsedResponse;
