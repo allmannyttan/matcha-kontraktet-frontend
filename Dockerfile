@@ -6,6 +6,7 @@ COPY package*.json ./
 RUN npm ci
 COPY . /app
 ENV REACT_APP_API_BASE_URL=http://replace-this-url
+ENV REACT_APP_LOGO=replace-this-logo-name
 RUN env
 RUN npm run build
 
