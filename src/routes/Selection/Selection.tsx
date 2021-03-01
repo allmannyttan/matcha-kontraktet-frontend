@@ -109,7 +109,7 @@ const Selection: React.FC<SelectionProps> = ({
       </div>
     </Header>
 
-    {selection.contracts.length > 0 ? (
+    {selection.contracts && selection.contracts.length > 0 ? (
       <List>
         <ListHeader>
           <Column>Namn</Column>
