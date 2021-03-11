@@ -10,7 +10,7 @@ on:
     tags:
       - v*
 env:
-  IMAGE_NAME_FRONTEND: sublet-detector-frontend
+  IMAGE_NAME_FRONTEND: matcha-kontraktet-frontend
 jobs:
   build-frontend:
     name: Build and test frontend
