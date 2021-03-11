@@ -5,10 +5,20 @@ import {
   FETCH_SELECTION,
   FETCHING_SELECTION,
   SELECTION_ERROR,
+  SortOptions,
+  SortDirection,
 } from "./types";
 import { get, post, del } from "../../utils/fetch";
 import history from "../../utils/history";
-import { sortByStatus } from "../../utils/contract";
+import {
+  sortByName,
+  sortByStatus,
+  sortByContractStreet,
+  sortByRegistrationStreet,
+  sortByDate,
+  sortByContractNumber,
+  sortByComment,
+} from "../../utils/contract";
 
 export const isFetching = (isFetching: boolean) => {
   return { type: FETCHING_SELECTION, isFetching };
@@ -58,7 +68,7 @@ export const getSelection = (id: string) => async (
     const { data } = await get(`/selection/${id}`, token);
     const contracts = await get(`/selection/${id}/contracts`, token);
 
-    data.contracts = sortByStatus(contracts.data);
+    data.contracts = sortByStatus(contracts.data, SortDirection.ASCENDING);
 
     dispatch({
       type: FETCH_SELECTION,
@@ -131,7 +141,7 @@ export const checkPopulationRegistraion = (id?: string) => async (
     await get(`/selection/${id}/sync-population-registration`, token);
     const { data } = await get(`/selection/${id}/contracts`, token);
 
-    selection.contracts = sortByStatus(data);
+    selection.contracts = sortByStatus(data, SortDirection.ASCENDING);
 
     dispatch({
       type: FETCH_SELECTION,
@@ -169,4 +179,64 @@ export const deleteSelection = (id: string) => async (
     console.log(err);
     dispatch(isFetching(false));
   }
+};
+
+export const sortSelection = (
+  newSortColumn: string,
+  sortOptions: SortOptions,
+  data: any
+) => async (dispatch: ThunkDispatch<{}, {}, AnyAction>, getState: any) => {
+  if (sortOptions.column === newSortColumn) {
+    // If same column, toggle direction
+    sortOptions.direction =
+      sortOptions.direction === SortDirection.ASCENDING
+        ? SortDirection.DESCENDING
+        : SortDirection.ASCENDING;
+  } else {
+    // If new column, set ascending
+    sortOptions.direction = SortDirection.ASCENDING;
+  }
+  sortOptions.column = newSortColumn;
+
+  if (sortOptions.column === "name") {
+    data.contracts = sortByName(data.contracts, sortOptions.direction);
+  }
+
+  if (sortOptions.column === "street") {
+    data.contracts = sortByContractStreet(
+      data.contracts,
+      sortOptions.direction
+    );
+  }
+
+  if (sortOptions.column === "regstreet") {
+    data.contracts = sortByRegistrationStreet(
+      data.contracts,
+      sortOptions.direction
+    );
+  }
+
+  if (sortOptions.column === "date") {
+    data.contracts = sortByDate(data.contracts, sortOptions.direction);
+  }
+
+  if (sortOptions.column === "contractNumber") {
+    data.contracts = sortByContractNumber(
+      data.contracts,
+      sortOptions.direction
+    );
+  }
+
+  if (sortOptions.column === "status") {
+    data.contracts = sortByStatus(data.contracts, sortOptions.direction);
+  }
+
+  if (sortOptions.column === "comment") {
+    data.contracts = sortByComment(data.contracts, sortOptions.direction);
+  }
+
+  dispatch({
+    type: FETCH_SELECTION,
+    payload: data,
+  });
 };

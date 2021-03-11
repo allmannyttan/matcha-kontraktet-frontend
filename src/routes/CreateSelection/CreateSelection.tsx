@@ -104,11 +104,17 @@ const CreateSelection: React.FC<CreateSelectionProps> = ({
               id="selection_term"
               name="selection_term"
               type="text"
-              placeholder="Sökterm"
+              placeholder="Sökterm (del av hyresobjektid)"
             />
-            <DatePicker name="from" placeholder="Från" />
-            <DatePicker name="to" placeholder="Till" />
-            <Input id="name" name="name" type="text" placeholder="Namn" />
+            <DatePicker
+              name="from"
+              placeholder="Från (hämta kontrakt signerade efter detta datum)"
+            />
+            <DatePicker
+              name="to"
+              placeholder="Till (hämta kontrakt signerade före detta datum)"
+            />
+            <Input id="name" name="name" type="text" placeholder="Urvalsnamn" />
             <ErrorMessage component="div" name="name" />
             <ErrorMessage component="div" name="selection_term" />
             {selection.hasError && <Error>{selection.errorMessage}</Error>}

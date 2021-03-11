@@ -6,6 +6,7 @@ import {
   SELECTION_ERROR,
   SelectionState,
   SelectionActionTypes,
+  SortDirection,
 } from "./types";
 
 const initialState: SelectionState = {
@@ -24,6 +25,11 @@ const initialState: SelectionState = {
   },
   hasError: false,
   errorMessage: "",
+  sortingOptions: [],
+  sortOptions: {
+    column: "name",
+    direction: SortDirection.ASCENDING,
+  },
 };
 
 export function selectionReducer(
