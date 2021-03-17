@@ -4,6 +4,8 @@ export interface SelectionState {
   selection: Selection;
   hasError: boolean;
   errorMessage: string;
+  sortingOptions: String[];
+  sortOptions: SortOptions;
 }
 
 export enum ContractStatus {
@@ -45,6 +47,16 @@ export interface Selection {
   created_at: Date;
   from: Date | null;
   to: Date | null;
+}
+
+export enum SortDirection {
+  ASCENDING = "asc",
+  DESCENDING = "desc",
+}
+
+export interface SortOptions {
+  column: string;
+  direction: SortDirection;
 }
 
 export const FETCH_SELECTIONS = "FETCH_SELECTIONS";

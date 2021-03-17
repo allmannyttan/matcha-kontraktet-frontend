@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Wrapper = styled(Link)`
   cursor: pointer;
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr 1fr;
+  grid-template-columns: 1fr 2fr 2fr 1fr;
   padding: 15px 10px;
   color: rgb(40, 40, 40);
   transition: all 0.1s ease-in-out;

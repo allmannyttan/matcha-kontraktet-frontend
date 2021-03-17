@@ -7,11 +7,14 @@ import {
   getSelection,
   deleteSelection,
   checkPopulationRegistraion,
+  sortSelection,
 } from "../../store/selection/actions";
+import { SortOptions } from "../../store/selection/types";
 
 interface SelectionContainerProps extends State {
   getSelection: typeof getSelection;
   deleteSelection: typeof deleteSelection;
+  sortSelection: typeof sortSelection;
   checkPopulationRegistraion: typeof checkPopulationRegistraion;
 }
 
@@ -19,6 +22,7 @@ const SelectionContainer: React.FC<SelectionContainerProps> = ({
   selection,
   getSelection,
   deleteSelection,
+  sortSelection,
   checkPopulationRegistraion,
 }) => {
   const { selectionId } = useParams<{ selectionId: string }>();
@@ -34,6 +38,7 @@ const SelectionContainer: React.FC<SelectionContainerProps> = ({
       selection={selection.selection}
       deleteSelection={deleteSelection}
       checkPopulationRegistraion={checkPopulationRegistraion}
+      sortSelection={sortSelection}
     />
   );
 };
@@ -45,6 +50,8 @@ const mapDispatchToProps = (dispatch: any) => ({
   deleteSelection: (id: string) => dispatch(deleteSelection(id)),
   checkPopulationRegistraion: (id?: string) =>
     dispatch(checkPopulationRegistraion(id)),
+  sortSelection: (id: string, sortOptions: SortOptions, data: any) =>
+    dispatch(sortSelection(id, sortOptions, data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectionContainer);
