@@ -22,7 +22,7 @@ const SelectionList: React.FC<SelectionListProps> = ({ selections }) => {
     <>
       <Header>
         <div>Urvalsnamn</div>
-        <div>Sökterm (del av hyresobjektid)</div>
+        <div>Sökterm (del av hyresobjektsnr)</div>
         <div>Senaste slagning mot folkbokföring</div>
         <div>Skapad av</div>
       </Header>

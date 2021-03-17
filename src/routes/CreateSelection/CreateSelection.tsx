@@ -104,7 +104,7 @@ const CreateSelection: React.FC<CreateSelectionProps> = ({
               id="selection_term"
               name="selection_term"
               type="text"
-              placeholder="Sökterm (del av hyresobjektid)"
+              placeholder="Sökterm (del av hyresobjektsnr)"
             />
             <DatePicker
               name="from"
