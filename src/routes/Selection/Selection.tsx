@@ -106,10 +106,11 @@ const Selection: React.FC<SelectionProps> = ({
       <Header>
         <div>
           <div>
-            <strong>Sökterm (hyresobjektid):</strong> {selection.selection_term}
+            <strong>Sökterm (hyresobjektsnr):</strong>{" "}
+            {selection.selection_term}
           </div>
           <div>
-            <strong>Sökdatum:</strong>{" "}
+            <strong>Datumintervall:</strong>{" "}
             {`${
               selection.from
                 ? format(new Date(selection.from), "yyyy-MM-dd")
