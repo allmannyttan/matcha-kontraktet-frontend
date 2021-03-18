@@ -13,7 +13,7 @@ application:
  route:
    enabled: true
    host: matcha-frontend.apps.instance-1.46y7eba9.kubeapp.cloud
-   addtionalLabels:
+   additionalLabels:
      router: default
  forecastle:
    enabled: true
