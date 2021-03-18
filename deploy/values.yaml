@@ -12,6 +12,7 @@ application:
       team: allmanytta
  route:
    enabled: true
+   host: matcha-frontend.apps.instance-1.46y7eba9.kubeapp.cloud
  forecastle:
    enabled: true
  # kubernetes deployment
