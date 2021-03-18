@@ -1,0 +1,70 @@
+dte: false
+application: 
+ applicationName: "macha"
+ # tenant operator space
+ space:
+   enabled: true
+   tenant: "allmannyttan"
+   annotations:
+      argocd.argoproj.io/sync-wave: "-1"
+   additionalLabels:
+      kind: pr
+      team: allmanytta
+ route:
+   enabled: true
+   host: matcha-frontend.apps.instance-1.46y7eba9.kubeapp.cloud
+   additionalLabels:
+     router: default
+ forecastle:
+   enabled: true
+ # kubernetes deployment
+ deployment:
+   annotations:
+   volumes: {}
+   imagePullSecrets: nexus-docker-config-forked   
+   image:
+     repository: IMAGE
+     tag: TAG
+   resources: 
+     limits:
+       memory: 1Gi 
+       cpu: 0.5
+     requests:
+       memory: 128Mi
+       cpu: 0.1
+   env:
+   - name: REACT_APP_API_BASE_URL
+     value: macha-kontraket-backend-allmannyttan-dev.apps.instance-1.46y7eba9.kubeapp.cloud
+   - name: REACT_APP_LOGO
+     value: hfab
+   probes:
+     readinessProbe:
+       failureThreshold: 3
+       periodSeconds: 60
+       successThreshold: 1
+       timeoutSeconds: 1
+       initialDelaySeconds: 10
+       httpGet:
+         path: /
+         port: 80
+     livenessProbe:
+       failureThreshold: 3
+       periodSeconds: 60
+       successThreshold: 1
+       timeoutSeconds: 1
+       initialDelaySeconds: 10
+       httpGet:
+         path: /
+         port: 80
+ # kubernetes service         
+ service:
+   ports:
+   - port: 80
+     name: http
+     targetPort: 80
+ # kubernetes rbac
+ rbac:
+   create: true
+   serviceAccount:
+     create: true
+     enabled: true
