@@ -1,5 +1,5 @@
 apiVersion: v2
-name: matcha-frontend
+name: macha-kontraket-backend
 description: A Helm chart for Kubernetes
 dependencies:
 - name: application
