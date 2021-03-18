@@ -18,7 +18,7 @@ metadata:
     kubernetes.io/description: anyuid provides all features of the restricted SCC
       but allows users to run with any UID and any GID.
     release.openshift.io/create-only: "true"
-  name: anyuid
+  name: anyuid-{{ .Release.Namespace }}-{{ .Values.application.applicationName }}
 priority: 10
 readOnlyRootFilesystem: false
 requiredDropCapabilities:
