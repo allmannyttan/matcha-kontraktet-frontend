@@ -13,6 +13,8 @@ application:
  route:
    enabled: true
    host: matcha-frontend.apps.instance-1.46y7eba9.kubeapp.cloud
+   addtionalLabels:
+     router: default
  forecastle:
    enabled: true
  # kubernetes deployment
