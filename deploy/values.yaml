@@ -17,6 +17,8 @@ application:
      router: default
  forecastle:
    enabled: true
+   icon: https://raw.githubusercontent.com/stakater/ForecastleIcons/master/allmanyttan-logo.png
+   displayName: matcha-kontraktet-frontend
  # kubernetes deployment
  deployment:
    annotations:
