@@ -19,3 +19,4 @@ COPY start.sh /
 
 EXPOSE 80
 CMD /bin/sh -c "/start.sh"
+
