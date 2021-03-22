@@ -34,7 +34,7 @@ application:
        cpu: 0.1
    env:
    - name: REACT_APP_API_BASE_URL
-     value: macha-kontraket-backend-allmannyttan-dev.apps.instance-1.46y7eba9.kubeapp.cloud
+     value: https://macha-kontraket-backend-allmannyttan-dev.apps.instance-1.46y7eba9.kubeapp.cloud
    - name: REACT_APP_LOGO
      value: hfab
    probes:
