@@ -1,6 +1,6 @@
 dte: false
 application: 
- applicationName: "macha"
+ applicationName: "mk-frontend"
  # tenant operator space
  space:
    enabled: true
@@ -12,7 +12,6 @@ application:
       team: allmanytta
  route:
    enabled: true
-   host: matcha-frontend.apps.instance-1.46y7eba9.kubeapp.cloud
    additionalLabels:
      router: default
  forecastle:
