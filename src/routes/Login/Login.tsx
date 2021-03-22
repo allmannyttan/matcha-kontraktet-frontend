@@ -64,7 +64,7 @@ const Login: React.FC<LoginProps> = ({ login }) => {
               id="username"
               name="username"
               type="text"
-              placeholder="Användarnamn"
+              placeholder="Användarnamn demo"
             />
             <ErrorMessage component="div" name="username" />
             <Input
