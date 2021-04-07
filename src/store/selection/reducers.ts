@@ -22,6 +22,7 @@ const initialState: SelectionState = {
     created_at: new Date(),
     from: null,
     to: null,
+    total_contracts: 0,
   },
   hasError: false,
   errorMessage: "",
