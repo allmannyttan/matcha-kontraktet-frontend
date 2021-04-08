@@ -74,7 +74,7 @@ const Login: React.FC<LoginProps> = ({ login }) => {
               placeholder="Lösenord"
             />
             <ErrorMessage component="div" name="password" />
-            <Button type="submit">Logga in</Button>
+            <Button type="submit">Log in</Button>
           </Form>
         </Formik>
       </FormWrapper>
