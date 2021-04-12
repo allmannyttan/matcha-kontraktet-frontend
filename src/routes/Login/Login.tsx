@@ -42,7 +42,7 @@ const Login: React.FC<LoginProps> = ({ login }) => {
   return (
     <Wrapper>
       <FormWrapper>
-        <H1>Logga in</H1>
+        <H1>Log in</H1>
         <Formik
           initialValues={{ username: '', password: '' }}
           validationSchema={LoginSchema}
