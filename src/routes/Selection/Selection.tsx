@@ -124,6 +124,10 @@ const Selection: React.FC<SelectionProps> = ({
             {selection.created_at &&
               format(new Date(selection.created_at), "yyyy-MM-dd HH:mm")}
           </div>
+          <div>
+            <strong>Visar: </strong>
+            {selection.contracts.length} av {selection.total_contracts}
+          </div>
         </div>
         <div>
           <DeleteButton onClick={() => deleteSelection(selection.id)}>

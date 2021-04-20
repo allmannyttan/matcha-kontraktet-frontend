@@ -47,6 +47,7 @@ export interface Selection {
   created_at: Date;
   from: Date | null;
   to: Date | null;
+  total_contracts: number;
 }
 
 export enum SortDirection {
