@@ -35,6 +35,7 @@ export interface Contract {
   start_date: Date | null;
   contract_id: string;
   comment: string;
+  exception: string;
 }
 
 export const FETCHING_CONTRACT = "FETCHING_CONTRACT";

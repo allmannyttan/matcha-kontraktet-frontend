@@ -40,10 +40,10 @@ const normalizeName = (name: string) => {
   const nameParts = name.split(" ");
   const lastNameCount = Math.max(2, nameParts.length - 1);
 
-  let lastNames = nameParts.slice(lastNameCount - 1, nameParts.length);
-  let firstNames = nameParts.slice(0, lastNameCount - 1);
+  const lastNames = nameParts.slice(lastNameCount - 1, nameParts.length);
+  const firstNames = nameParts.slice(0, lastNameCount - 1);
 
-  let normalizedName = lastNames.join(" ") + ", " + firstNames.join(" ");
+  const normalizedName = lastNames.join(" ") + ", " + firstNames.join(" ");
 
   return normalizedName;
 };
@@ -114,4 +114,17 @@ export const sortByComment = (
       ? a.comment?.localeCompare(b.comment)
       : b.comment?.localeCompare(a.comment)
   );
+};
+
+export const sortByException = (
+  contracts: Contract[],
+  direction: SortDirection
+) => {
+  return contracts.sort((a: Contract, b: Contract) => {
+    if (!a.exception) return 1;
+    if (!b.exception) return -1;
+    return direction === SortDirection.ASCENDING
+      ? a.exception?.localeCompare(b.exception)
+      : b.exception?.localeCompare(a.exception);
+  });
 };

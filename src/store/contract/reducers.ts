@@ -28,6 +28,7 @@ const initialState: ContractState = {
     comment: "",
     start_date: null,
     contract_id: "",
+    exception: "",
   },
   hasError: false,
   errorMessage: "",
