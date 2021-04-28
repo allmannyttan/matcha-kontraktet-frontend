@@ -96,6 +96,9 @@ const Contract: React.FC<ContractProps> = ({ contract, updateContract }) => {
         <strong>Folkbokföringsadress:</strong>{" "}
         {contract.contract.population_registration_information?.address}
       </Info>
+      <Info>
+        <strong>Avvikelse:</strong> {contract.contract.exception}
+      </Info>
       <Formik
         initialValues={{
           status: contract.contract.status || "",

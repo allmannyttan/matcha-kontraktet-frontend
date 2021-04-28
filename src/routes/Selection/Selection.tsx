@@ -28,7 +28,7 @@ const List = styled.div`
 const ListHeader = styled.div`
   font-size: 14px;
   display: grid;
-  grid-template-columns: 2fr 2fr 1fr 1fr 2fr 1fr 2fr;
+  grid-template-columns: 2fr 2fr 1fr 1fr 2fr 1fr 2fr 2fr;
   padding: 10px;
   background-color: rgb(230, 230, 230);
   color: rgb(150, 150, 150);
@@ -48,7 +48,7 @@ const HeaderColumn = styled(Button)`
 const Contract = styled(Link)`
   cursor: pointer;
   display: grid;
-  grid-template-columns: 2fr 2fr 1fr 1fr 2fr 1fr 2fr;
+  grid-template-columns: 2fr 2fr 1fr 1fr 2fr 1fr 2fr 2fr;
   grid-column-gap: 10px;
   padding: 15px 10px;
   color: rgb(40, 40, 40);
@@ -186,6 +186,13 @@ const Selection: React.FC<SelectionProps> = ({
             >
               Kommentar
             </HeaderColumn>
+
+            <HeaderColumn
+              as="button"
+              onClick={() => sortSelection("exception", sortOptions, selection)}
+            >
+              Avvikelse
+            </HeaderColumn>
           </ListHeader>
           {selection.contracts.map((contract: any, i: number) => (
             <Contract
@@ -207,6 +214,7 @@ const Selection: React.FC<SelectionProps> = ({
                 <ContractStatus status={contract.status} />
               </Column>
               <Column>{contract.comment}</Column>
+              <Column>{contract.exception}</Column>
             </Contract>
           ))}
         </List>

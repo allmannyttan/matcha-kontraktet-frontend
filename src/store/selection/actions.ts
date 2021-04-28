@@ -18,6 +18,7 @@ import {
   sortByDate,
   sortByContractNumber,
   sortByComment,
+  sortByException,
 } from "../../utils/contract";
 
 export const isFetching = (isFetching: boolean) => {
@@ -233,6 +234,10 @@ export const sortSelection = (
 
   if (sortOptions.column === "comment") {
     data.contracts = sortByComment(data.contracts, sortOptions.direction);
+  }
+
+  if (sortOptions.column === "exception") {
+    data.contracts = sortByException(data.contracts, sortOptions.direction);
   }
 
   dispatch({
