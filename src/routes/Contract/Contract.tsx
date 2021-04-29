@@ -76,12 +76,12 @@ const Contract: React.FC<ContractProps> = ({ contract, updateContract }) => {
       <h1>Uppdatera kontrakt</h1>
       <Info>
         <strong>Innehavare:</strong>{" "}
-        {contract.contract.contract_information?.name}{" "}
+        {contract.contract.contract_information.map((c) => c.name).join(", ")}{" "}
         <ContractStatus status={contract.contract.status} />
       </Info>
       <Info>
         <strong>Adress:</strong>{" "}
-        {contract.contract.contract_information?.address}
+        {contract.contract.contract_information[0]?.address}
       </Info>
       <Info>
         <strong>Avtalsnummer:</strong> {contract.contract.contract_id}
@@ -94,7 +94,9 @@ const Contract: React.FC<ContractProps> = ({ contract, updateContract }) => {
       </Info>
       <Info>
         <strong>Folkbokföringsadress:</strong>{" "}
-        {contract.contract.population_registration_information?.address}
+        {contract.contract.population_registration_information
+          ?.map((c) => c.address)
+          .join(", ")}{" "}
       </Info>
       <Info>
         <strong>Avvikelse:</strong> {contract.contract.exception}

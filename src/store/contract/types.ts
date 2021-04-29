@@ -28,8 +28,8 @@ export interface PopulationRegistrationInformation {
 
 export interface Contract {
   id: string;
-  contract_information: ContractInformation;
-  population_registration_information: PopulationRegistrationInformation;
+  contract_information: ContractInformation[];
+  population_registration_information: PopulationRegistrationInformation[];
   last_population_registration_lookup: Date | null;
   status: ContractStatus;
   start_date: Date | null;

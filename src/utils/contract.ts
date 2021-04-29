@@ -51,14 +51,14 @@ const normalizeName = (name: string) => {
 export const sortByName = (contracts: Contract[], direction: SortDirection) => {
   if (direction === SortDirection.ASCENDING) {
     return contracts.sort((a: Contract, b: Contract) =>
-      normalizeName(a.contract_information.name).localeCompare(
-        normalizeName(b.contract_information.name)
+      normalizeName(a.contract_information[0]?.name).localeCompare(
+        normalizeName(b.contract_information[0]?.name)
       )
     );
   } else {
     return contracts.sort((a: Contract, b: Contract) =>
-      normalizeName(b.contract_information.name).localeCompare(
-        normalizeName(a.contract_information.name)
+      normalizeName(b.contract_information[0]?.name).localeCompare(
+        normalizeName(a.contract_information[0]?.name)
       )
     );
   }
@@ -70,11 +70,11 @@ export const sortByContractStreet = (
 ) => {
   return contracts.sort((a: Contract, b: Contract) =>
     direction === SortDirection.ASCENDING
-      ? a.contract_information.address.localeCompare(
-          b.contract_information.address
+      ? a.contract_information[0]?.address.localeCompare(
+          b.contract_information[0]?.address
         )
-      : b.contract_information.address.localeCompare(
-          a.contract_information.address
+      : b.contract_information[0]?.address.localeCompare(
+          a.contract_information[0]?.address
         )
   );
 };
@@ -85,11 +85,11 @@ export const sortByRegistrationStreet = (
 ) => {
   return contracts.sort((a: Contract, b: Contract) =>
     direction === SortDirection.ASCENDING
-      ? a.population_registration_information?.address?.localeCompare(
-          b.population_registration_information?.address
+      ? a.population_registration_information[0]?.address?.localeCompare(
+          b.population_registration_information[0]?.address
         )
-      : b.population_registration_information?.address?.localeCompare(
-          a.population_registration_information?.address
+      : b.population_registration_information[0]?.address?.localeCompare(
+          a.population_registration_information[0]?.address
         )
   );
 };

@@ -13,16 +13,20 @@ const initialState: ContractState = {
   updateSuccess: false,
   contract: {
     id: "",
-    contract_information: {
-      pnr: "",
-      name: "",
-      address: "",
-    },
-    population_registration_information: {
-      pnr: "",
-      name: "",
-      address: "",
-    },
+    contract_information: [
+      {
+        pnr: "",
+        name: "",
+        address: "",
+      },
+    ],
+    population_registration_information: [
+      {
+        pnr: "",
+        name: "",
+        address: "",
+      },
+    ],
     last_population_registration_lookup: null,
     status: ContractStatus.VERIFIED,
     comment: "",
