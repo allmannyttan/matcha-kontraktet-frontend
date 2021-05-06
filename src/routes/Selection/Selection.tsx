@@ -74,6 +74,11 @@ const EmptyState = styled.div`
   font-weight: 700;
 `;
 
+const Asterix = styled.div`
+  color: rgb(214, 62, 62);
+  margin-left: 2px;
+`;
+
 const DeleteButton = styled(Button)`
   background: rgb(245, 140, 140);
   color: rgb(214, 62, 62);
@@ -199,8 +204,13 @@ const Selection: React.FC<SelectionProps> = ({
               key={`contract-${i}`}
               to={`/kontrakt/${contract.id}?selectionId=${selection.id}`}
             >
-              <Column>{contract.contract_information.name}</Column>
-              <Column>{contract.contract_information?.address}</Column>
+              <Column>
+                {contract.contract_information[0]?.name}{" "}
+                {contract.contract_information.length > 1 ? (
+                  <Asterix>*</Asterix>
+                ) : null}
+              </Column>
+              <Column>{contract.contract_information[0]?.address}</Column>
               <Column>{contract.contract_id}</Column>
               <Column>
                 {contract.start_date

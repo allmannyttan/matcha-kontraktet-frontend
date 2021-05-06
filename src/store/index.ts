@@ -13,7 +13,7 @@ export const rootReducer = combineReducers({
 })
 
 const persistConfig = {
-  key: 'root',
+  key: 'matcha-kontraktet',
   storage,
 }
 
