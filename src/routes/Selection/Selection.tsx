@@ -83,7 +83,7 @@ const DeleteButton = styled(Button)`
   background: rgb(245, 140, 140);
   color: rgb(214, 62, 62);
   border: 1px solid rgb(214, 62, 62);
-  margin-right: 15px;
+  // margin-right: 15px;
 `;
 
 interface SelectionProps {
@@ -138,9 +138,9 @@ const Selection: React.FC<SelectionProps> = ({
           <DeleteButton onClick={() => deleteSelection(selection.id)}>
             Ta bort urval
           </DeleteButton>
-          <Button onClick={() => checkPopulationRegistraion(selection.id)}>
+          {/* <Button onClick={() => checkPopulationRegistraion(selection.id)}>
             Gör slagning mot folkbokföring
-          </Button>
+          </Button> */}
         </div>
       </Header>
 
