@@ -218,7 +218,7 @@ const Selection: React.FC<SelectionProps> = ({
                   : ""}
               </Column>
               <Column>
-                {contract.population_registration_information?.address}
+                {contract.population_registration_information?.[0]?.address}
               </Column>
               <Column>
                 <ContractStatus status={contract.status} />
