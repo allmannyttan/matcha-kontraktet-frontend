@@ -4,10 +4,6 @@ import './index.css'
 import App from './App'
 
 class ErrorBoundary extends React.Component {
-  constructor(props: any) {
-    super(props)
-  }
-
   componentDidCatch(error: any, info: any) {
     if (process.env.NODE_ENV === 'production') {
       console.error(error)
