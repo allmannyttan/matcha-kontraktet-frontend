@@ -2,14 +2,12 @@ dte: false
 application: 
  applicationName: "mk-frontend"
  # tenant operator space
- space:
+ namespace:
    enabled: true
-   tenant: "allmannyttan"
-   annotations:
-      argocd.argoproj.io/sync-wave: "-1"
    additionalLabels:
       kind: pr
       team: allmanytta
+      stakater.com/tenant: allmanyttan
  route:
    enabled: true
    additionalLabels:
