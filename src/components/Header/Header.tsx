@@ -35,7 +35,7 @@ const Nav = styled.div`
 const Divder = styled.span`
   margin: 0 10px;
 `;
-const logo = `/logo-${REACT_APP_LOGO?.toLocaleLowerCase() || "vh"}.png`;
+const logo = `/logo/logo-${REACT_APP_LOGO?.toLocaleLowerCase() || "vh"}.png`;
 
 interface HeaderProps {
   logout: typeof logout;
